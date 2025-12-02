@@ -1,10 +1,9 @@
 import Image from "next/image";
-import { Post } from "@/types/posts";
-import { sanityImageBuilder } from "@/lib/sanityImageBuilder";
+import Link from "next/link";
+import { imageUrlBuilder } from "@/lib/sanity/ImageUrlBuilder";
 import { truncateText } from "@/utils/textUtils";
 import { formatDate } from "@/utils/dateUtils";
-import Link from "next/link";
-
+import { Post } from "@/types/posts";
 
 type BlogCardProps =  {
   post: Post;
@@ -12,7 +11,7 @@ type BlogCardProps =  {
 
 export default function BlogCard({ post }: BlogCardProps) {
    const thumbnailUrl = post.thumbnail
-    ? sanityImageBuilder(post.thumbnail)?.url()
+    ? imageUrlBuilder(post.thumbnail)?.url()
     : "/images/common/thumbnail-placeholder.jpg";
 
   return (

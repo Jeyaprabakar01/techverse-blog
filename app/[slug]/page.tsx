@@ -1,23 +1,24 @@
-import { sanityImageBuilder } from "@/lib/sanityImageBuilder";
-import { client } from "@/sanity/client";
-import { Post } from "@/types/posts";
-import { formatDate } from "@/utils/dateUtils";
-import { PortableText } from "next-sanity";
 import Image from "next/image";
-
-const POST_QUERY = `*[_type == "post" && slug.current == $slug][0]`;
-
-const options = { next: { revalidate: 30 } };
+import { PortableText } from "next-sanity";
+import { getPost } from "@/lib/sanity/posts";
+import { imageUrlBuilder } from "@/lib/sanity/ImageUrlBuilder";
+import { formatDate } from "@/utils/dateUtils";
 
 export default async function SingleBlog({
   params,
 }: {
   params: Promise<{ slug: string }>;
 }) {
-  const post = await client.fetch<Post>(POST_QUERY, await params, options);
+  const { slug } = await params;
+
+  const post = await getPost(slug);
+
+  if (!post) {
+    return <div>Post not found</div>;
+  }
 
   const thumbnailUrl = post.thumbnail
-      ? sanityImageBuilder(post.thumbnail)?.url()
+      ? imageUrlBuilder(post.thumbnail)?.url()
       : "/images/common/thumbnail-placeholder.jpg";
 
   return (
