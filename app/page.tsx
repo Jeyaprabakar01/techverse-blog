@@ -1,9 +1,14 @@
+import BlogList from "@/components/BlogList";
+import FeaturedBlogCard from "@/components/FeaturedBlogCard";
+
 export default function Home() {
   return (
     <>
       <main>
-        <h1>Hello</h1>
+        <FeaturedBlogCard />
+        <BlogList />
       </main>
     </>
   );
 }
+
