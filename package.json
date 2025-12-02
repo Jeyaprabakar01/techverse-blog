@@ -9,7 +9,9 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@sanity/image-url": "^2.0.1",
     "next": "16.0.6",
+    "next-sanity": "^11.6.10",
     "react": "19.2.0",
     "react-dom": "19.2.0"
   },
