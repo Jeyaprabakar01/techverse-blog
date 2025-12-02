@@ -21,7 +21,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${patrickHand.className} bg-tb-gradient mx-auto max-w-[1440px] px-6 antialiased md:px-14 lg:px-32 xl:px-36`}
+        className={`${patrickHand.className} bg-tb-gradient mx-auto min-h-screen max-w-[1440px] px-6 antialiased md:px-14 lg:px-32 xl:px-36`}
       >
         {children}
       </body>
