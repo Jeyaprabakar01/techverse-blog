@@ -6,10 +6,11 @@ export interface Post extends SanityDocument {
   slug: {
     current: string;
   };
+  excerpt: string;
   category: string;
   postedDate: string;
-  thumbnail?: SanityImageSource & {
-    alt?: string;
+  thumbnail: SanityImageSource & {
+    alt: string;
   };
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   content: any[];

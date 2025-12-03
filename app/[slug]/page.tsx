@@ -3,6 +3,8 @@ import { PortableText } from "next-sanity";
 import { getPost, getPosts } from "@/lib/sanity/posts";
 import { imageUrlBuilder } from "@/lib/sanity/ImageUrlBuilder";
 import { formatDate } from "@/utils/dateUtils";
+import { Metadata } from "next";
+
 
 export async function generateStaticParams() {
 
@@ -11,6 +13,36 @@ export async function generateStaticParams() {
   return posts.map((post) => ({
     slug: post.slug.current,
   }));
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const post = await getPost(slug);
+
+  if (!post) {
+    return {
+      title: "Post Not Found",
+      description: "The requested blog post could not be found.",
+    };
+  }
+
+  const thumbnailUrl = imageUrlBuilder(post.thumbnail)?.url() || "/images/common/thumbnail-placeholder.jpg"
+
+  return {
+    title: post.title,
+    description: post.excerpt,
+    keywords: post.category,
+    openGraph: {
+      title: post.title,
+      description: post.excerpt,
+      images: [thumbnailUrl],
+      url: `https://techverse-blog-hub.vercel.app/${post.slug.current}`,
+    },
+  };
 }
 
 export default async function SingleBlog({
