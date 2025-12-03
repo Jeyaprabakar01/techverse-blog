@@ -1,8 +1,17 @@
 import Image from "next/image";
 import { PortableText } from "next-sanity";
-import { getPost } from "@/lib/sanity/posts";
+import { getPost, getPosts } from "@/lib/sanity/posts";
 import { imageUrlBuilder } from "@/lib/sanity/ImageUrlBuilder";
 import { formatDate } from "@/utils/dateUtils";
+
+export async function generateStaticParams() {
+
+  const posts = await getPosts()
+
+  return posts.map((post) => ({
+    slug: post.slug.current,
+  }));
+}
 
 export default async function SingleBlog({
   params,
