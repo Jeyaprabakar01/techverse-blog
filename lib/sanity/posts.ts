@@ -6,7 +6,6 @@ const POST_QUERY = `*[_type == "post" && slug.current == $slug][0]`;
 
 const options = { next: { revalidate: 30 } };
 
-
 export async function getPosts(): Promise<Post[]> {
   try {
     const posts = await client.fetch<Post[]>(POSTS_QUERY, {}, options);

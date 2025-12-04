@@ -5,10 +5,8 @@ import { imageUrlBuilder } from "@/lib/sanity/ImageUrlBuilder";
 import { formatDate } from "@/utils/dateUtils";
 import { Metadata } from "next";
 
-
 export async function generateStaticParams() {
-
-  const posts = await getPosts()
+  const posts = await getPosts();
 
   return posts.map((post) => ({
     slug: post.slug.current,
@@ -30,7 +28,9 @@ export async function generateMetadata({
     };
   }
 
-  const thumbnailUrl = imageUrlBuilder(post.thumbnail)?.url() || "/images/common/thumbnail-placeholder.jpg"
+  const thumbnailUrl =
+    imageUrlBuilder(post.thumbnail)?.url() ||
+    "/images/common/thumbnail-placeholder.jpg";
 
   return {
     title: post.title,
@@ -59,8 +59,8 @@ export default async function SingleBlog({
   }
 
   const thumbnailUrl = post.thumbnail
-      ? imageUrlBuilder(post.thumbnail)?.url()
-      : "/images/common/thumbnail-placeholder.jpg";
+    ? imageUrlBuilder(post.thumbnail)?.url()
+    : "/images/common/thumbnail-placeholder.jpg";
 
   return (
     <section className="mx-auto flex flex-col gap-6 py-24 xl:w-4/5">
@@ -70,9 +70,7 @@ export default async function SingleBlog({
           <span>{formatDate(post.postedDate)}</span>
         </div>
 
-        <h1 className="mt-3 text-center text-2xl leading-9.5">
-          {post.title}
-        </h1>
+        <h1 className="mt-3 text-center text-2xl leading-9.5">{post.title}</h1>
       </div>
 
       <div className="relative mt-3 h-53.25 w-full md:h-102.5 lg:h-115 xl:mt-5 xl:h-130">
@@ -84,10 +82,9 @@ export default async function SingleBlog({
         />
       </div>
 
-      <div className="mt-4 px-2 flex flex-col gap-2 text-xl leading-7 text-white md:px-14 xl:mt-6 xl:px-20">
-        <PortableText value={post.content} /> 
+      <div className="mt-4 flex flex-col gap-2 px-2 text-xl leading-7 text-white md:px-14 xl:mt-6 xl:px-20">
+        <PortableText value={post.content} />
       </div>
-
     </section>
   );
 }

@@ -9,14 +9,25 @@ const patrickHand = Patrick_Hand({
 
 export const metadata: Metadata = {
   title: "TechVerse Blog | Tech & Programming Insights",
-  description: "Explore insights, tutorials, and tips on web development, JavaScript, and modern tech trends at TechVerse Blog.",
-  keywords: ["web development","JavaScript tutorials","React.js","Next.js guide","front-end development","full-stack development","modern web technologies","programming tips"],
+  description:
+    "Explore insights, tutorials, and tips on web development, JavaScript, and modern tech trends at TechVerse Blog.",
+  keywords: [
+    "web development",
+    "JavaScript tutorials",
+    "React.js",
+    "Next.js guide",
+    "front-end development",
+    "full-stack development",
+    "modern web technologies",
+    "programming tips",
+  ],
   openGraph: {
-      title: "TechVerse Blog | Tech & Programming Insights",
-      description: "Explore insights, tutorials, and tips on web development, JavaScript, and modern tech trends at TechVerse Blog.",
-      images: ["/images/common/thumbnail-placeholder.jpg"],
-      url: "https://techverse-blog-hub.vercel.app"
-    },
+    title: "TechVerse Blog | Tech & Programming Insights",
+    description:
+      "Explore insights, tutorials, and tips on web development, JavaScript, and modern tech trends at TechVerse Blog.",
+    images: ["/images/common/thumbnail-placeholder.jpg"],
+    url: "https://techverse-blog-hub.vercel.app",
+  },
 };
 
 export default function RootLayout({
@@ -34,3 +45,4 @@ export default function RootLayout({
     </html>
   );
 }
+
