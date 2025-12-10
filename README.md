@@ -4,7 +4,7 @@ A **minimal blog website** developed using **Next.js (App Router)**, **Tailwind 
 
 It includes a **homepage listing all blog posts** and **single blog pages**, featuring **server-side rendering**, **optimized performance**, and **SEO-focused architecture**. Perfect for practicing **dynamic routing**, **server-rendered React**, and **CMS integration**.
 
-TechVerse Blog leverages **server components**, **dynamic metadata generation**, and **Sanity CMS** for structured, scalable content workflows, resulting in a \*\*fast, reliable, and suitable for learning and practice.
+TechVerse Blog leverages **server components**, **dynamic metadata generation**, and **Sanity CMS** for structured, scalable content workflows, resulting in a fast, reliable, and suitable for learning and practice.
 
 ---
 
